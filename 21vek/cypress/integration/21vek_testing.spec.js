@@ -27,13 +27,13 @@ describe('21vek actions', () => {
 
     it('Adding item to court using Navigation Bar', () => {
       
-      cy.get('.styles_promoItems__2Tq3m li:nth-child(2)').click()
-
+      cy.get('[class*="promoItems"] li:nth-child(2)').click()
+      
       Cypress.on('uncaught:exception', (err, runnable) => {
             return false
         })
 
-      cy.xpath('//*[@id="j-result-page-1"]/li[1]/dl/div[2]/form/button').click()
+      cy.xpath('//*[@id="j-result-page-1"]/li[1]//button').click()
         
       catalogPage.clickShoppingCourtButton()
       shoppingCourtPage.validateCourtCounter(1)
