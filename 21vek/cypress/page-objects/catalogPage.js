@@ -1,10 +1,11 @@
 export class CatalogPage{
+
+    open() {
+        cy.visit('https://www.21vek.by/')
+    }
     
-    clickShoppinCourtButton() {
+    clickShoppingCourtButton() {
         cy.get('[class*= "headerCartBox"]').click()
     }
 
-    validateCourtCounter(value) {
-        cy.get('[class*="j-basket__counter"]').should('have.value', value)
-    }
 }

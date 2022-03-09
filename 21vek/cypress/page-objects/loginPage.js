@@ -1,8 +1,5 @@
 export class LoginPage {
-    open() {
-        cy.visit('https://www.21vek.by/')
-    }
-
+    
     clickLogin() {
         cy.get('.userToolsText').click()
         cy.get('.userToolsBtn').click()
