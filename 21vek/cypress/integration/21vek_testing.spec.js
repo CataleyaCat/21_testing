@@ -11,7 +11,7 @@ describe('21vek actions', () => {
 
 
     it('Login to the system', () => {
-    
+
       catalogPage.open()
       loginPage.clickLogin()
       loginPage.fillEmail('mailkot484@gmail.com')
@@ -29,16 +29,19 @@ describe('21vek actions', () => {
             return false
         })
 
-      cy.xpath('//*[@id="j-result-page-1"]/li[1]//button').click()
+      cy.xpath('//*[@class="b-result"]/li[1]//button').click()
         
       catalogPage.clickShoppingCourtButton()
       shoppingCourtPage.validateCourtCounter(1)
 
     })
 
-    it('Validate counter in shopping court', () =>{
+    it('Validate shopping court counter', () =>{
        shoppingCourtPage.clickCourtCounterPlus()
        shoppingCourtPage.validateCourtCounter(2)
+       
+       shoppingCourtPage.clickCourtCounterMinus()
+       shoppingCourtPage.validateCourtCounter(1)
     })
 
     it('Validate max amount of item', () => {
@@ -46,10 +49,8 @@ describe('21vek actions', () => {
       cy.get('.notification').invoke('text').then((text1) => {
         cy.get('input[class*="basket__counter"]').invoke('text').then((text2) => {
           expect(text1).to.eq(text2)
-        })
-       
+        }) 
       })
-
     })
 
     it('Delete item from shopping court', () => {

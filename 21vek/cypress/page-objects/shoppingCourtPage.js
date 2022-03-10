@@ -5,7 +5,11 @@ export class ShoppingCourtPage {
     }
 
     clickCourtCounterPlus() {
-        cy.get('[class*="j-basket__plus"]').click()
+        cy.get('[class*="counter__plus"]').click()
+    }
+
+    clickCourtCounterMinus() {
+        cy.get('[class*="counter__minus"]').click()
     }
 
     deleteItemFromCourt() {
