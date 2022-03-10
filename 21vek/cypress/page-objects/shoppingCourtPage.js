@@ -11,4 +11,8 @@ export class ShoppingCourtPage {
     deleteItemFromCourt() {
         cy.get('[class*="cr-from_basket"]').click()
     }
+
+    validateDeletingFromCourt() {
+        cy.get('.cr-from_basket').should('not.have.descendants', 'tr')
+    }
 }
