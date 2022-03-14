@@ -2,15 +2,15 @@ export class LoginPage {
     
     clickLogin() {
         cy.xpath('//button/span[contains(text(), "Аккаунт")]').click()
-        cy.xpath('//button/span[contains(text(),"Войти")]').click()
+        cy.get('button[title="Вход"]').click()
     }
 
     fillEmail(email) {
-        cy.get('input[id="login-email"]').type(email)
+        cy.get('input[id="login-email"]').type(`${email}`)
     }
 
     fillPassword(password) {
-        cy.get('input[type="password"]').type(password)
+        cy.get('input[type="password"]').type(`${password}`)
     }
 
     clickLoginButton() {

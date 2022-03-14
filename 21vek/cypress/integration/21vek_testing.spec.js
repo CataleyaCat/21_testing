@@ -9,22 +9,42 @@ describe('21vek actions', () => {
     const catalogPage = new CatalogPage()
     const shoppingCourtPage = new ShoppingCourtPage()
 
+    before(() => {
+      catalogPage.open()
+    })
 
     it('Login to the system', () => {
-
-      catalogPage.open()
       loginPage.clickLogin()
-      loginPage.fillEmail('mailkot484@gmail.com')
-      loginPage.fillPassword('123456')
+      cy.fixture('credentials').then(credentials => {
+        loginPage.fillEmail(credentials.email)
+        loginPage.fillPassword(credentials.password)
+      })
       loginPage.clickLoginButton()
-
       cy.wait(6000)
+    })
+
+    it('Searching product by name using search bar', () => {
+      cy.fixture('product').then(product => {
+        catalogPage.searchProduct(product.name)
+        cy.get(`a[href*="mobile/iphone13"]`).should('exist')
+      })
+    })
+
+    it('Filtering Apple products using Side Bar', () =>{
+      catalogPage.clickTabSmartphones()
+      Cypress.on('uncaught:exception', (err, runnable) => {
+        return false
+    })
+      cy.get('label[title="Apple"]').click()
+      cy.get('button[class*="filter__button"]').click()
+      cy.get(`a[href*="mobile/iphone"]`).should('exist')
+
     })
 
     it('Adding item to court using Navigation Bar', () => {
       
-      cy.get('[class*="promoItems"] li:nth-child(2)').click()
-      
+      catalogPage.clickTabSmartphones()
+    
       Cypress.on('uncaught:exception', (err, runnable) => {
             return false
         })

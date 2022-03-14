@@ -8,4 +8,13 @@ export class CatalogPage{
         cy.xpath('//span[contains(text(), "Корзина")]').click()
     }
 
+    clickTabSmartphones() {
+        cy.get('[class*="promoItems"] li:nth-child(2)').click()
+    }
+
+    searchProduct(productToSearch) { 
+        cy.get('input[placeholder="Поиск товаров"]').click()
+       .type(`${productToSearch}{enter}`)
+    }
+
 }
