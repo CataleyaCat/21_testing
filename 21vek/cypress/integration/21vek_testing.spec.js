@@ -29,7 +29,7 @@ describe('21vek actions', () => {
             return false
         })
 
-      cy.xpath('//*[@class="b-result"]/li[1]//button').click()
+      cy.xpath('(//button[contains(text(),"В корзину")])[1]').click()
         
       catalogPage.clickShoppingCourtButton()
       shoppingCourtPage.validateCourtCounter(1)

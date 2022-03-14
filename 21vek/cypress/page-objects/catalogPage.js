@@ -5,7 +5,7 @@ export class CatalogPage{
     }
     
     clickShoppingCourtButton() {
-        cy.get('[class*= "headerCartBox"]').click()
+        cy.xpath('//span[contains(text(), "Корзина")]').click()
     }
 
 }

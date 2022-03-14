@@ -1,7 +1,7 @@
 export class ShoppingCourtPage {
 
     validateCourtCounter(amount) {
-        cy.get('[class*="j-basket__counter"]').should('have.value', amount)
+        cy.get('input[class*="basket__counter"]').should('have.value', amount)
     }
 
     clickCourtCounterPlus() {
@@ -17,6 +17,6 @@ export class ShoppingCourtPage {
     }
 
     validateDeletingFromCourt() {
-        cy.get('.cr-from_basket').should('not.have.descendants', 'tr')
+        cy.xpath('//a[contains(text(), "удалить")]').should('not.have.descendants', 'tr')
     }
 }
