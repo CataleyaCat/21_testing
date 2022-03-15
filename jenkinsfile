@@ -5,7 +5,7 @@ pipeline {
         stage('build') {
             steps {
                 bat 'npm install'
-                bat 'npm cypress install --save-dev'
+                bat 'npx cypress install --save-dev'
             }
         }
         stage('parallel') {
