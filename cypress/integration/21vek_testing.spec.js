@@ -38,10 +38,6 @@ describe('21vek actions', () => {
       cy.get('label[title="Apple"]').click()
       cy.get('button[class*="filter__button"]').click()
 
-      // cy.get('li[class*="result__item"] ').each(($el) => {
-      //   cy.wrap($el).should('have text', 'Apple')
-      // })
-
       cy.get('span[class="result__name"]').each(($el) => {
         cy.wrap($el).should('contain', 'Apple')
       })
