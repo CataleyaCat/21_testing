@@ -4,7 +4,7 @@ export class CatalogPage{
         cy.visit('https://www.21vek.by/')
     }
     
-    clickShoppingCourtButton() {
+    clickShoppingCartButton() {
         cy.xpath('//span[contains(text(), "Корзина")]').click()
     }
 
