@@ -2,12 +2,12 @@
 
 import { CatalogPage } from "../page-objects/catalogPage"
 import { LoginPage } from "../page-objects/loginPage"
-import { ShoppingCourtPage } from "../page-objects/shoppingCourtPage"
+import { ShoppingCartPage } from "../page-objects/shoppingCartPage"
 
 describe('21vek actions', () => {
     const loginPage = new LoginPage()
     const catalogPage = new CatalogPage()
-    const shoppingCourtPage = new ShoppingCourtPage()
+    const shoppingCartPage = new ShoppingCartPage()
 
     before(() => {
       Cypress.on('uncaught:exception', (err, runnable) => {
@@ -44,23 +44,23 @@ describe('21vek actions', () => {
 
      })
 
-    it('Adding item to court using Navigation Bar', () => {
+    it('Adding item to cart using Navigation Bar', () => {
       
       catalogPage.clickTabSmartphones()
 
       cy.xpath('(//button[contains(text(),"В корзину")])[1]').click()
         
-      catalogPage.clickShoppingCourtButton()
-      shoppingCourtPage.validateCourtCounter(1)
+      catalogPage.clickShoppingCartButton()
+      shoppingCartPage.validateCartCounter(1)
 
     })
 
-    it('Validate shopping court counter', () =>{
-       shoppingCourtPage.clickCourtCounterPlus()
-       shoppingCourtPage.validateCourtCounter(2)
+    it('Validate shopping cart counter', () =>{
+       shoppingCartPage.clickCartCounterPlus()
+       shoppingCartPage.validateCartCounter(2)
        
-       shoppingCourtPage.clickCourtCounterMinus()
-       shoppingCourtPage.validateCourtCounter(1)
+       shoppingCartPage.clickCartCounterMinus()
+       shoppingCartPage.validateCartCounter(1)
     })
 
     it('Validate max amount of item', () => {
@@ -72,9 +72,9 @@ describe('21vek actions', () => {
       })
     })
 
-    it('Delete item from shopping court', () => {
-      shoppingCourtPage.deleteItemFromCourt()
-      shoppingCourtPage.validateDeletingFromCourt()
+    it('Delete item from shopping cart', () => {
+      shoppingCartPage.deleteItemFromCart()
+      shoppingCartPage.validateDeletingFromCart()
     }) 
 
 })
