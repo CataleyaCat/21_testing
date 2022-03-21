@@ -5,15 +5,15 @@ export class CatalogPage{
     }
     
     clickShoppingCartButton() {
-        cy.xpath('//span[contains(text(), "Корзина")]').click()
+        cy.xpath('//span[text()= "Корзина"]').click()
     }
 
     clickTabSmartphones() {
-        cy.get('[class*="promoItems"] li:nth-child(2)').click()
+        cy.xpath('//a[text()="Смартфоны"]').click()
     }
 
     searchProduct(productToSearch) { 
-        cy.get('input[placeholder="Поиск товаров"]').click()
+        cy.xpath('//input[@placeholder="Поиск товаров"]').click()
        .type(`${productToSearch}{enter}`)
     }
 

@@ -1,22 +1,22 @@
 export class ShoppingCartPage {
 
     validateCartCounter(amount) {
-        cy.get('input[class*="basket__counter"]').should('have.value', amount)
+        cy.xpath('//input[contains(@class, "basket__counter")]').should('have.value', amount)
     }
 
     clickCartCounterPlus() {
-        cy.get('[class*="counter__plus"]').click()
+        cy.xpath('//span[contains(@class,"counter__plus")]').click()
     }
 
     clickCartCounterMinus() {
-        cy.get('[class*="counter__minus"]').click()
+        cy.xpath('//span[contains(@class,"counter__minus")]').click()
     }
 
     deleteItemFromCart() {
-        cy.get('[class*="cr-from_basket"]').click()
+        cy.xpath('//a[text()="удалить"]').click()
     }
 
     validateDeletingFromCart() {
-        cy.xpath('//a[contains(text(), "удалить")]').should('not.have.descendants', 'tr')
+        cy.xpath('//tbody[@class="basket__list"]').should('not.have.descendants', 'tr')
     }
 }

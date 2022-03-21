@@ -1,19 +1,19 @@
 export class LoginPage {
     
     clickLogin() {
-        cy.xpath('//button/span[contains(text(), "Аккаунт")]').click()
-        cy.get('button[title="Вход"]').click()
+        cy.xpath('//button/span[text()= "Аккаунт"]').click()
+        cy.xpath('//button[@title="Вход"]').click()
     }
 
     fillEmail(email) {
-        cy.get('input[id="login-email"]').type(`${email}`)
+        cy.xpath('//input[@label="Электронная почта"]').type(`${email}`)
     }
 
     fillPassword(password) {
-        cy.get('input[type="password"]').type(`${password}`)
+        cy.xpath('//input[@label="Пароль"]').type(`${password}`)
     }
 
     clickLoginButton() {
-        cy.xpath('//button[contains(text(),"Войти")]').click()
+        cy.xpath('//button[text()="Войти"]').click()
     }
 }
