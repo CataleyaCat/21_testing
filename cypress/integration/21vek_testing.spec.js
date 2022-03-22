@@ -47,9 +47,7 @@ describe('21vek actions', () => {
     it('Adding item to cart using Navigation Bar', () => {
       
       catalogPage.clickTabSmartphones()
-
-      cy.xpath('(//button[contains(text(),"В корзину")])[1]').click()
-        
+      cy.xpath('(//button[contains(text(),"В корзину")])[1]').click()    
       catalogPage.clickShoppingCartButton()
       shoppingCartPage.validateCartCounter(1)
 
@@ -63,14 +61,14 @@ describe('21vek actions', () => {
        shoppingCartPage.validateCartCounter(1)
     })
 
-    it('Validate max amount of item', () => {
-      cy.get('input[class*="basket__counter"]').clear().type(1000)
-      cy.get('.notification').invoke('text').then((text1) => {
-        cy.get('input[class*="basket__counter"]').invoke('text').then((text2) => {
-          expect(text1).to.eq(text2)
-        }) 
-      })
-    })
+    // it('Validate max amount of items', () => {
+    //   cy.xpath('//input[contains(@class, "basket__counter")]').clear().type(1000)
+    //   cy.get('.notification').invoke('val').then((val1) => {
+    //     cy.xpath('//input[contains(@class, "basket__counter")]').invoke('val').then((val2) => {
+    //       expect(val1).to.eq(val2)
+    //     }) 
+    //   })
+    // })
 
     it('Delete item from shopping cart', () => {
       shoppingCartPage.deleteItemFromCart()
