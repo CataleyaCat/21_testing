@@ -15,24 +15,24 @@ describe('21vek actions', () => {
     it('Validate max amount of items', () => {
       
         cy.fixture('product').then(product => {
-            catalogPage.searchProduct(product.samsung)
+            catalogPage.searchProduct(product.phone)
 
-            cy.xpath('//button[contains(text(),"В корзину")]').click()
+            cy.xpath('(//button[contains(text(),"В корзину")])[1]').click()
             catalogPage.clickShoppingCartButton()
         
             cy.request({method: 'Post', url: 'https://gate.21vek.by/quantity/check.quantity', 
               body: {
-                 "codes": product.idSamsung
+                 "codes": product.idPhone
                 }
               }).then((response) => {
-               cy.writeFile('cypress/fixtures/quantity.json', response.body["65575415"])
+               cy.writeFile('cypress/fixtures/quantity.json', response.body["6088597"])
                 })
 
             cy.fixture('quantity').then(quantity => {
                cy.xpath('//input[contains(@class, "basket__counter")]').clear().type('3000', '{enter}')
                cy.wait(2000)
-               cy.xpath('//input[contains(@class, "basket__counter")]').invoke('val').then((val1) => {
-                  expect(Number(val1)).to.eq(quantity.count)            
+               cy.xpath('//input[contains(@class, "basket__counter")]').invoke('val').then((val) => {
+                  expect(Number(val)).to.eq(quantity.count)            
                 })
            
             })
